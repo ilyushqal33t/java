@@ -1,20 +1,17 @@
+import java.util.ArrayList;
+
 public class Peasant extends BaseHero {
 
-    
-
     public Peasant(String name) {
-        super(250, 250, 20, name);
+        super(250, 255, 0, 0, 20, name);
     }
 
     @Override
-    public String getInfo(){
-        return "Peasant";    
+    public String getInfo() {
+        return "Peasant";
     }
 
     @Override
-    public void step() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'step'");
+    public void step(ArrayList<BaseHero> team, ArrayList<BaseHero> friends) {
     }
-
 }
