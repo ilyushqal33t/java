@@ -10,14 +10,16 @@ public abstract class BaseHero implements Interface {
     protected int maxDamage;
     protected int armor;
     protected final String NAME;
+    protected Position position;
 
-    public BaseHero(int hp, int speed, int damage, int maxDamage, int armor, String name) {
+    public BaseHero(int hp, int speed, int damage, int maxDamage, int armor, String name, int x, int y) {
         this.hp = hp;
         this.speed = speed;
         this.damage = damage;
         this.maxDamage = maxDamage;
         this.armor = armor;
         NAME = name;
+        position = new Position(x, y);
     }
 
     @Override
@@ -48,7 +50,16 @@ public abstract class BaseHero implements Interface {
     public void attack(BaseHero target, int damage, int maxDamage) {
         int causedDamage;
         if (damage < target.armor) causedDamage = damage;
-        else causedDamage = maxDamage;
+        else {
+            switch (new Random().nextInt(4)){
+                case 0:
+                    causedDamage = maxDamage;
+                    break;
+                default:
+                    causedDamage = damage;
+                    break;
+            }
+        }
         System.out.printf("%s attack %s\t", this.getClass().getSimpleName(), target.getClass().getSimpleName());
         System.out.printf("Power of knock = %d\n", causedDamage);
         System.out.printf("%s hp= %d\n", target.getClass().getSimpleName(), target.hp);
@@ -58,5 +69,4 @@ public abstract class BaseHero implements Interface {
     public static String generateName() {
         return Names.values()[new Random().nextInt(Names.values().length)].toString();
     }
-
 }

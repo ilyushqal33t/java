@@ -10,31 +10,31 @@ public class Program {
         for (int i = 0; i < 10; i++) {
             switch (new Random().nextInt(4)) {
                 case 0:
-                    team1.add(new Acrobat(BaseHero.generateName()));
+                    team1.add(new Acrobat(BaseHero.generateName(), 0, i));
                     break;
                 case 1:
-                    team1.add(new Magician(BaseHero.generateName()));
+                    team1.add(new Magician(BaseHero.generateName(), 0, i));
                     break;
                 case 2:
-                    team1.add(new Crossbowman(BaseHero.generateName()));
+                    team1.add(new Crossbowman(BaseHero.generateName(), 0, i));
                     break;
                 default:
-                    team1.add(new Peasant(BaseHero.generateName()));
+                    team1.add(new Peasant(BaseHero.generateName(), 0, i));
                     break;
             }
 
             switch (new Random().nextInt(4)) {
                 case 0:
-                    team2.add(new Robber(BaseHero.generateName()));
+                    team2.add(new Robber(BaseHero.generateName(), 9, i));
                     break;
                 case 1:
-                    team2.add(new Priest(BaseHero.generateName()));
+                    team2.add(new Priest(BaseHero.generateName(), 9, i));
                     break;
                 case 2:
-                    team2.add(new SniperHero(BaseHero.generateName()));
+                    team2.add(new SniperHero(BaseHero.generateName(), 9, i));
                     break;
                 default:
-                    team2.add(new Peasant(BaseHero.generateName()));
+                    team2.add(new Peasant(BaseHero.generateName(), 9, i));
                     break;
             }
         }
@@ -68,5 +68,13 @@ public class Program {
         });
 
         team1.forEach(u -> u.step(team2, team1));
+
+        for (BaseHero unit : team1) {
+            System.out.printf("%d, %d\n", unit.position.x, unit.position.y);
+        }
+
+        for (BaseHero unit : team2) {
+            System.out.printf("%d, %d\n", unit.position.x, unit.position.y);
+        }
     }
 }
