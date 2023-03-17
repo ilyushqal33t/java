@@ -5,7 +5,8 @@ public class SniperHero extends ShooterClass{
         super(450, 260, 38, 43, 40, 33, name, x, y);
     }
 
-    public String getInfo() {
+    @Override
+    public String getName() {
         return "SniperHero";
     }
 

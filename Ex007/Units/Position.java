@@ -12,4 +12,9 @@ public class Position{
         return Math.sqrt(Math.pow(x - unit.position.x, 2) + Math.pow(y - unit.position.y, 2));
         
     }
+
+    public boolean isEquals(Position position){
+        if ((position.x == this.x) & (position.y == this.y)) return true;
+        else return false;
+    }
 }

@@ -5,11 +5,7 @@ public class Crossbowman extends ShooterClass {
     }
 
     @Override
-    public String getInfo() {
-        return "Crossbowman ";
-    }
-
-    public String sado() {
-        return "SniperHero";
+    public String getName() {
+        return "Crossbowman";
     }
 }

@@ -5,6 +5,7 @@ public abstract class BaseHero implements Interface {
     protected static Random r = new Random();
 
     protected int hp;
+    protected int maxHp;
     protected int speed;
     protected int damage;
     protected int maxDamage;
@@ -14,6 +15,7 @@ public abstract class BaseHero implements Interface {
 
     public BaseHero(int hp, int speed, int damage, int maxDamage, int armor, String name, int x, int y) {
         this.hp = hp;
+        this.maxHp = hp;
         this.speed = speed;
         this.damage = damage;
         this.maxDamage = maxDamage;
@@ -24,16 +26,17 @@ public abstract class BaseHero implements Interface {
 
     @Override
     public void step(ArrayList<BaseHero> team, ArrayList<BaseHero> friends) {
-        System.out.println("Ход");
     }
 
     @Override
     public String getInfo() {
-        return "---------------";
+        String outStr = String.format("\t%-3s\t⚔️ %-3d\t\uD83D\uDEE1 %-3d\t♥️%-3d%%\t☠️%-3d\t        " , 0,0 , armor,(int) hp * 100/maxHp, damage);
+        return outStr;
+
     }
 
-    public void getName() {
-        System.out.println(NAME);
+    public String getName() {
+        return "base";
     }
 
     public int getSpeed() {
@@ -60,13 +63,16 @@ public abstract class BaseHero implements Interface {
                     break;
             }
         }
-        System.out.printf("%s attack %s\t", this.getClass().getSimpleName(), target.getClass().getSimpleName());
-        System.out.printf("Power of knock = %d\n", causedDamage);
-        System.out.printf("%s hp= %d\n", target.getClass().getSimpleName(), target.hp);
         target.getDamage(causedDamage);
     }
 
     public static String generateName() {
         return Names.values()[new Random().nextInt(Names.values().length)].toString();
     }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    
 }

@@ -4,15 +4,10 @@ public class Magician extends MagClass {
         super(380, 250, -33, -40, 40, 300, name, x, y);
     }
 
+
     @Override
-    public String getInfo() {
+    public String getName() {
         return "Magician";
     }
-
-    // @Override
-    // public void step() {
-    // // TODO Auto-generated method stub
-    // throw new UnsupportedOperationException("Unimplemented method 'step'");
-    // }
 
 }

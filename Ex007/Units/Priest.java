@@ -8,9 +8,8 @@ public class Priest extends MagClass {
         return "Priest";
     }
 
-    // @Override
-    // public void step() {
-    // // TODO Auto-generated method stub
-    // throw new UnsupportedOperationException("Unimplemented method 'step'");
-    // }
+    @Override
+    public String getName() {
+        return "Priest";
+    }
 }

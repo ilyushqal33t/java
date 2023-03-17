@@ -12,6 +12,11 @@ public class Peasant extends BaseHero {
     }
 
     @Override
+    public String getName() {
+        return "Peasant";
+    }
+
+    @Override
     public void step(ArrayList<BaseHero> team, ArrayList<BaseHero> friends) {
     }
 }

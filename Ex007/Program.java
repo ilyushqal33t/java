@@ -1,60 +1,63 @@
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Program {
+    public static final int GANG_SIZE = 10;
+    public static ArrayList<BaseHero> whiteSide = new ArrayList<>();
+    public static ArrayList<BaseHero> darkSide = new ArrayList<>();
+
     public static void main(String[] args) {
-        ArrayList<BaseHero> team1 = new ArrayList<>();
-        ArrayList<BaseHero> team2 = new ArrayList<>();
+        Scanner sc = new Scanner(System.in);
+        Init();
 
-        for (int i = 0; i < 10; i++) {
+        while(true){
+            step();
+            ConsoleView.view();
+            sc.nextLine(); 
+        }
+    }
+
+    public static void Init() {
+        for (int i = 1; i < GANG_SIZE + 1; i++) {
             switch (new Random().nextInt(4)) {
                 case 0:
-                    team1.add(new Acrobat(BaseHero.generateName(), 0, i));
+                    whiteSide.add(new Acrobat(BaseHero.generateName(), 1, i));
                     break;
                 case 1:
-                    team1.add(new Magician(BaseHero.generateName(), 0, i));
+                    whiteSide.add(new Magician(BaseHero.generateName(), 1, i));
                     break;
                 case 2:
-                    team1.add(new Crossbowman(BaseHero.generateName(), 0, i));
+                    whiteSide.add(new Crossbowman(BaseHero.generateName(), 1, i));
                     break;
                 default:
-                    team1.add(new Peasant(BaseHero.generateName(), 0, i));
+                    whiteSide.add(new Peasant(BaseHero.generateName(), 1, i));
                     break;
             }
 
             switch (new Random().nextInt(4)) {
                 case 0:
-                    team2.add(new Robber(BaseHero.generateName(), 9, i));
+                    darkSide.add(new Robber(BaseHero.generateName(), 10, i));
                     break;
                 case 1:
-                    team2.add(new Priest(BaseHero.generateName(), 9, i));
+                    darkSide.add(new Priest(BaseHero.generateName(), 10, i));
                     break;
                 case 2:
-                    team2.add(new SniperHero(BaseHero.generateName(), 9, i));
+                    darkSide.add(new SniperHero(BaseHero.generateName(), 10, i));
                     break;
                 default:
-                    team2.add(new Peasant(BaseHero.generateName(), 9, i));
+                    darkSide.add(new Peasant(BaseHero.generateName(), 10, i));
                     break;
             }
         }
+    }
 
-        System.out.println("-------------\n TEAM 1:");
-        for (BaseHero unit : team1) {
-            System.out.printf(String.format("%s --- ", unit.getInfo()));
-            unit.getName();
-        }
-
-        System.out.println("-------------\n TEAM 2:");
-        for (BaseHero unit2 : team2) {
-            System.out.printf(String.format("%s --- ", unit2.getInfo()));
-            unit2.getName();
-        }
-
+    public static void step() {
         ArrayList<BaseHero> list = new ArrayList<>();
 
-        list.addAll(team2);
-        list.addAll(team1);
+        list.addAll(darkSide);
+        list.addAll(whiteSide);
         list.sort(new Comparator<BaseHero>() {
             @Override
             public int compare(BaseHero u1, BaseHero u2) {
@@ -67,14 +70,11 @@ public class Program {
             }
         });
 
-        team1.forEach(u -> u.step(team2, team1));
-
-        for (BaseHero unit : team1) {
-            System.out.printf("%d, %d\n", unit.position.x, unit.position.y);
-        }
-
-        for (BaseHero unit : team2) {
-            System.out.printf("%d, %d\n", unit.position.x, unit.position.y);
+        for (BaseHero unit : list) {
+            if (darkSide.contains(unit)) {
+                unit.step(whiteSide, darkSide);
+            } else
+                unit.step(darkSide, whiteSide);
         }
     }
 }

@@ -5,7 +5,7 @@ public class Acrobat extends InfantClass {
     }
 
     @Override
-    public String getInfo() {
+    public String getName(){
         return "Acrobat";
     }
 

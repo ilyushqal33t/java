@@ -8,9 +8,8 @@ public class Robber extends InfantClass {
         return "Robber";
     }
 
-    // @Override
-    // public void step() {
-    // // TODO Auto-generated method stub
-    // throw new UnsupportedOperationException("Unimplemented method 'step'");
-    // }
+    @Override
+    public String getName() {
+        return "Robber";
+    }
 }
