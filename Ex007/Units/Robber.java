@@ -4,9 +4,6 @@ public class Robber extends InfantClass {
         super(340, 330, 70, 80, 60, 450, name, x, y);
     }
 
-    public String getInfo() {
-        return "Robber";
-    }
 
     @Override
     public String getName() {

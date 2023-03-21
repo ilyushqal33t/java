@@ -6,10 +6,6 @@ public class Peasant extends BaseHero {
         super(250, 255, 0, 0, 20, name, x, y);
     }
 
-    @Override
-    public String getInfo() {
-        return "Peasant";
-    }
 
     @Override
     public String getName() {

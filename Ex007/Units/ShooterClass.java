@@ -28,7 +28,7 @@ public abstract class ShooterClass extends BaseHero{
         }
 
         for (BaseHero unit : friends) {
-            if (unit.getInfo().equals("Peasant")) {
+            if (unit instanceof Peasant) {      //unit.getName().equals("Peasant")
                 this.ammo++;
                 break;
             }
