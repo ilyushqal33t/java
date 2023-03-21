@@ -13,9 +13,9 @@ public class Program {
         Init();
 
         while(true){
-            step();
             ConsoleView.view();
             sc.nextLine();
+            step();
         }
     }
 
