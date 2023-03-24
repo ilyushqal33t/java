@@ -13,8 +13,8 @@ public abstract class ShooterClass extends BaseHero{
     public void step(ArrayList<BaseHero> team, ArrayList<BaseHero> friends) {
         if (this.ammo > 0 && this.hp > 0) {
     
-            BaseHero target = team.get(0);
-            double minDistance = this.position.getDistance(team.get(0));
+            BaseHero target = null;
+            double minDistance = Double.MAX_VALUE;
 
             for (BaseHero unit : team) {
                 if(this.position.getDistance(unit)<minDistance){

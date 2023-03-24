@@ -25,26 +25,58 @@ public class Position {
         boolean[] temp = checkPos(friends);
         float dx = Math.abs(this.x - position.x);
         float dy = Math.abs(this.y - position.y);
-        if (dx > dy) {
-            if (this.x < position.x & temp[1])
+        if ((dx > dy)) {
+            if (this.x < position.x && !temp[0] && this.x + 1 != 11) {
                 this.x += 1;
-            else
+                System.out.printf("1 %s\n", this.getClass().getSimpleName());
+                return;
+            } else if (this.x > position.x && !temp[1] && this.x - 1 != 0) {
                 this.x -= 1;
-        } else {
-            if (this.y < position.y)
+                System.out.printf("2 %s\n", this.getClass().getSimpleName());
+                return;
+            }
+            if (this.y <= position.y && !temp[2]&& this.y + 1 != 11) {
                 this.y += 1;
-            else
+                System.out.printf("3 %s\n", this.getClass().getSimpleName());
+                return;
+            } else if (this.y >= position.y && !temp[3]&& this.y - 1 != 0) {
                 this.y -= 1;
+                System.out.printf("4 %n", this.getClass().getSimpleName());
+                return;
+            }
+        } else {
+            if (this.y < position.y && !temp[2] && this.y + 1 != 11) {
+                this.y += 1;
+                System.out.printf("1.1 %s\n", this.getClass().getSimpleName());
+                return;
+            } else if (this.y > position.y && !temp[3] && this.x - 1 != 0) {
+                this.y -= 1;
+                System.out.printf("1.2 %s\n", this.getClass().getSimpleName());
+                return;
+            }
+            if (this.x <= position.x && !temp[0]&& this.x + 1 != 11) {
+                this.x += 1;
+                System.out.printf("1.3 %s\n", this.getClass().getSimpleName());
+                return;
+            } else if (this.x >= position.x && !temp[1]&& this.x - 1 != 0) {
+                this.x -= 1;
+                System.out.printf("1.4 %s\n", this.getClass().getSimpleName());
+                return;
+            }
         }
     }
 
-    public boolean[] checkPos(ArrayList<BaseHero> friends){
+    public boolean[] checkPos(ArrayList<BaseHero> friends) {
         boolean[] temp = new boolean[4];
         for (BaseHero u : friends) {
-            if((u.position.x == this.x+1) & (u.position.y == this.y)) temp[0] = true;
-            if((u.position.x == this.x-1) & (u.position.y == this.y)) temp[1] = true;
-            if((u.position.x == this.x) & (u.position.y == this.y+1)) temp[2] = true;
-            if((u.position.x == this.x) & (u.position.y == this.y-1)) temp[3] = true;
+            if ((u.position.x == this.x + 1) && (u.position.y == this.y))
+                temp[0] = true;
+            if ((u.position.x == this.x - 1) && (u.position.y == this.y))
+                temp[1] = true;
+            if ((u.position.x == this.x) && (u.position.y == this.y + 1))
+                temp[2] = true;
+            if ((u.position.x == this.x) && (u.position.y == this.y - 1))
+                temp[3] = true;
         }
         return temp;
     }

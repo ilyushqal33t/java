@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class Peasant extends BaseHero {
 
     public Peasant(String name, int x, int y) {
@@ -12,7 +10,7 @@ public class Peasant extends BaseHero {
         return "Peasant";
     }
 
-    @Override
-    public void step(ArrayList<BaseHero> team, ArrayList<BaseHero> friends) {
-    }
+    // @Override
+    // public void step(ArrayList<BaseHero> team, ArrayList<BaseHero> friends) {
+    // }
 }
