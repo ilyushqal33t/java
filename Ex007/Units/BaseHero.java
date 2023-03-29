@@ -73,6 +73,4 @@ public abstract class BaseHero implements Interface {
     public Position getPosition() {
         return position;
     }
-
-    
 }

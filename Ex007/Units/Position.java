@@ -49,7 +49,7 @@ public class Position {
                 this.y += 1;
                 System.out.printf("1.1 %s\n", this.getClass().getSimpleName());
                 return;
-            } else if (this.y > position.y && !temp[3] && this.x - 1 != 0) {
+            } else if (this.y > position.y && !temp[3] && this.y - 1 != 0) {
                 this.y -= 1;
                 System.out.printf("1.2 %s\n", this.getClass().getSimpleName());
                 return;

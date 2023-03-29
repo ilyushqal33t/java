@@ -9,9 +9,4 @@ public class Acrobat extends InfantClass {
         return "Acrobat";
     }
 
-    // @Override
-    // public void step(ArrayList<BaseHero> team1) {
-    // // TODO Auto-generated method stub
-    // }
-
 }
